@@ -4,7 +4,7 @@ from rest_framework.generics import CreateAPIView, RetrieveUpdateAPIView, ListCr
 from rest_framework.response import Response
 
 from .models import Sensor, Measurement
-from .serializers import SensorDetailSerializer, MeasurementSerializer
+from .serializers import SensorDetailSerializer, MeasurementSerializer, SensorMeasurmentSerializer
 
 
 class SensorViewCU(CreateAPIView, RetrieveUpdateAPIView, ListCreateAPIView):
@@ -18,4 +18,11 @@ class MeasurementsViewCU(CreateAPIView, RetrieveUpdateAPIView, ListCreateAPIView
 
     queryset = Measurement.objects.all()
     serializer_class = MeasurementSerializer
+
+
+class SensorMeasurementView(CreateAPIView, RetrieveUpdateAPIView, ListCreateAPIView):
+    """Класс для отображения всех данных"""
+
+    queryset = Sensor.objects.all()
+    serializer_class = SensorMeasurmentSerializer
 
